@@ -1,0 +1,210 @@
+@charset "utf-8";
+/***********2021-4-28 用户信息 修改 start***********/
+.settingbox .userbox .head_text .user .user_name {
+  color: #2D3037;
+}
+.settingbox .userbox .head_text .user .user_auth {
+  padding: 0 5px;
+  height: 16px;
+  background: rgba(18, 205, 102, 0.16);
+  border-radius: 4px;
+  border: 1px solid #12CD66;
+  color: #12CD66;
+  font-size: 12px;
+}
+.settingbox .setting_list .setting_list_item .setting_title {
+  color: #2D3037;
+  padding-top: 32px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.settingbox .setting_list .setting_list_item ul {
+  padding-left: 20px;
+}
+.settingbox .setting_list .setting_list_item ul li .bound {
+  display: inline-block;
+  color: #ff666f;
+  cursor: pointer;
+}
+.settingbox .setting_list .setting_list_item ul li .w_168 .new {
+  width: 36px;
+  height: 16px;
+  background: rgba(255, 102, 102, 0.1);
+  border-radius: 4px;
+  border: 1px solid #FF6666;
+  font-size: 12px;
+  color: #FF6666;
+}
+.settingbox .setting_list .setting_list_item:last-child {
+  padding-bottom: 60px;
+}
+/*******弹窗*****/
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+  padding: 0;
+  font-size: 12px;
+  line-height: 12px;
+}
+.modal-content .modal-body .row {
+  width: 100%;
+  margin: 0;
+  padding: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  color: #2D3037;
+  font-size: 14px;
+}
+.modal-content .modal-body .row .text_label {
+  line-height: 36px;
+}
+.modal-content .modal-body .row input {
+  width: 100%;
+}
+.modal-content .modal-body .row .text_muted {
+  margin-left: 16px;
+  opacity: 0.8;
+}
+.modal-content .modal-body .row .btn-group {
+  width: 100%;
+}
+.modal-content .modal-body .row .tips_icon {
+  display: inline-block;
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+.modal-content .modal-body .row .setinfo p {
+  width: 100%;
+  font-size: 14px;
+  color: #2D3037;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+.modal-content .modal-body .row .setinfo .text_muted {
+  font-size: 14px;
+  margin: 0;
+  color: #959DA8;
+}
+.modal-content .modal-body .row .col-xs-1,
+.modal-content .modal-body .row .col-xs-2,
+.modal-content .modal-body .row .col-xs-3 {
+  color: #a1a4a7;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio li {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin: 0 20px 20px 0;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio li span {
+  color: #2D3037;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio li a {
+  color: #ff6666;
+  margin-left: 32px;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio input[type=radio] {
+  display: inline-block;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #CED2D9;
+  margin: 0 9px 0 0;
+  position: relative;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio input[type=radio]::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #CED2D9;
+  background-color: #fff;
+}
+.modal-content .modal-body .row .checked_wrapper .circle_radio input[type=radio]:checked::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #FF6666;
+}
+.modal-content .modal-body .row .inputbox input {
+  width: 100%;
+}
+.modal-content .modal-body .row .inputbox .input-group {
+  width: 100%;
+}
+.modal-content .modal-body .row .inputbox .input-group .codeBtn {
+  cursor: pointer;
+  width: 30%;
+  color: #1F9FFF;
+}
+.modal-content .modal-body .row .inputbox .input-group .codeBtn:hover {
+  background-color: #eee;
+  border-color: #ccc;
+}
+.modal-content .modal-body .row .inputbox > p {
+  color: #a3a4a7;
+  margin-top: 16px;
+}
+.modal-content .modal-body .row .inputbox > p span:nth-child(2) {
+  color: #2D3037;
+}
+.modal-content .modal-footer button {
+  margin-left: 16px;
+}

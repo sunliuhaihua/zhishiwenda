@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <title>知识问答 - 亿速云计算管理平台</title>
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <link rel="shortcut icon" href="https://cache.yisu.com/user/uiqy/newImages/favicon.ico">
+    <link rel="apple-touch-icon" href="https://cache.yisu.com/user/uiqy/newImages/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://cache.yisu.com/user/uiqy/newImages/favicon.ico">
+    <script src="https://cache.yisu.com/user/uiqy/newJs/iconfont.js?v=20201210.2" type="text/javascript"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/bootstrap.min.css?v=20190921.01">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/backstage.css?v=20201117.1">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/bootstrap-select.css">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/change-service.css">
+    <script src="https://cache.yisu.com/user/uiqy/newJs/breakpoints.min.js"></script>
+    <link href="https://cache.yisu.com/user/uiqy//newCss/identify.css?v=20190813.11?v=20210106.2" type="text/css"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/common.css?v=20200807.14">
+    <link rel="stylesheet" href="css/user_quiz.css">
+    <script>
+        var ysconst = {};
+        ysconst.statis = '/static/';
+        ysconst.module = 'vhost';
+        ysconst.controller = 'identifi';
+        ysconst.action = 'certification';
+        Breakpoints();
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var browser = navigator.appName,
+            version = navigator.appVersion.split(";"),
+            browserWarn = '/browser_warn.html',
+            errorMsg = '对不起，您的IE浏览器版本过低，请升级IE浏览器或使用其它内核的浏览器';
+
+        if (version[1] !== undefined) {
+            version = version[1].replace(/[ ]/g, "");
+            if (browser == "Microsoft Internet Explorer" && version == "MSIE6.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            } else if (browser == "Microsoft Internet Explorer" && version == "MSIE7.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            } else if (browser == "Microsoft Internet Explorer" && version == "MSIE8.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            }
+        }
+    </script>
+    <div class="nav">
+        <div class="logo"><img src="https://cache.yisu.com/user/uiqy/newImages/logo.png" alt=""></div>
+        <!-- 自定义菜单栏 2020-02-18 start -->
+        <div class="navdiy">
+            <div class="navdiy-icon">
+                <i class="iconfont">&#xe65b;</i>
+                <div class="navdiy-bubble">自定义侧导航</div>
+            </div>
+        </div>
+        <!-- 自定义菜单栏 2020-02-18 end -->
+        <div class="user">
+            <div class="user_img"></div>
+            <span class="username">YS722374</span>
+            <span class="remark"></span>
+            <i></i>
+            <div class="user_link">
+                <ul>
+                    <li>
+                        <a href="https://uc.yisu.com/Vhost/userinfo">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-yonghuzhongxin"></use>
+                            </svg>
+                            <span>用户中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://uc.yisu.com/Vhost/account">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-caiwuzhanghu"></use>
+                            </svg>
+                            <span>财务账户</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="reset reset_connnn_pwd">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-zhongzhixitongmima"></use>
+                            </svg>
+                            <span>修改密码</span>
+                        </a>
+                    </li>
+                    <!--关闭旧后台-->
+                    <!--                <li>-->
+                    <!--                    <a href="-->
+                    <!--" target="_blank">-->
+                    <!--                        <svg class="icon" aria-hidden="true">-->
+                    <!--                            <use xlink:href="#icon-jiubanrukou"></use>-->
+                    <!--                        </svg>-->
+                    <!--                        <span>阿里云资源管理后台</span>-->
+                    <!--                    </a>-->
+                    <!--                </li>-->
+                    <li>
+                        <a href="javascript:;" id="logout">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-xiezai"></use>
+                            </svg>
+                            <span>退出登录</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="convenient clearfix">
+            <div class="item">
+                <i class="itme-service-tit" style="line-height: 66px;">专属客服 &gt;&gt;</i>
+                <span class="iconfont">&#xe6b9;</span>
+                <div class="item_dropmenu service_box">
+                    <div class="service-tit-des">
+                        <p>专属客服<span>扫描下方二维码添加客服微信</span></p>
+                    </div>
+                    <div class="head">
+                        <div class="head-service-msg">
+                            <div class="ewm">
+                                <img src="https://cache.yisu.com/upload/admin/user_qrcode_img/2020-05-26/1590495744.jpg"
+                                    alt="">
+                            </div>
+                            <ul>
+                                <li>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-yonghuzhongxin"></use>
+                                    </svg>
+                                    <span class="service_name">小梁</span>
+                                </li>
+                                <li>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-lianxidianhua"></use>
+                                    </svg>
+                                    <span>18002201135</span>
+                                </li>
+                                <li onclick="consultation('3007326437');">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-QQ"></use>
+                                    </svg>
+                                    <span>3007326437</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="service_edit" style="margin-top: 22px">
+                            <button type="button" id="change-service-btn" data-toggle="modal"
+                                data-target="#change-service">更换客服</button>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <ul class="clearfix">
+                            <li>购买、续费更优惠</li>
+                            <li>异常、告警先知会</li>
+                            <li>服务器资源使用实时看</li>
+                            <li>灵活稳定高性能成本低</li>
+                            <li>24h售后: 800-811-969</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="item charge_item">
+                <span class="iconfont">&#xe67c;</span>
+                <div class="item_dropmenu charge_dropmenu">
+                    <div class="charge_content">
+                        <p>账户余额</p>
+                        <div class="accountbox">
+                            <span>0</span><a href="https://www.yisu.com/recharge/">充 值</a>
+                        </div>
+                        <div class="linkturn clearfix">
+                            <a href="/index.php/vhost/coupon.html">代金券</a>
+                            <!--<a href="#">续 费</a>-->
+                            <a href="/index.php/vhost/invoice.html">发 票</a>
+                        </div>
+                        <div class="link_list">
+                            <ul>
+                                <li><a href="/index.php/vhost/order.html?protype=index">我的订单</a></li>
+                                <li><a href="/index.php/vhost/account.html">收支明细</a></li>
+                                <!--<li><a href="#">资源账单</a></li>
+                            <li><a href="#">合同管理</a></li>-->
+                            </ul>
+                        </div>
+                        <div class="link_list bb_none">
+                            <ul>
+                                <li><a href="/index.php/vhost/account.html">费用中心</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-menubar">
+        <div class="site-menubar-body">
+            <div class="menu-list-box" id="menu_box">
+                <div class="first-level-menu">
+                    <ul class="site-menu">
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="userList">
+                                <i class="iconfont">&#xe667;</i>
+                                <span>概况</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="cloudList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>云服务器</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ddosnewList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>安全防护</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ddoscdnList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>高防CDN</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="physicsList">
+                                <i class="iconfont">&#xe65d;</i>
+                                <span>裸金属</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="sslList">
+                                <i class="iconfont">&#xe6b4;</i>
+                                <span>SSL证书</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="dnsList">
+                                <i class="iconfont">&#xe633;</i>
+                                <span>DNS解析</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="rdsList">
+                                <i class="iconfont">&#xe641;</i>
+                                <span>云数据库</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="cdnList">
+                                <i class="iconfont">&#xe637;</i>
+                                <span>CDN加速</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="dcdnList">
+                                <i class="iconfont">&#xe6cd;</i>
+                                <span>全站加速</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="slbList">
+                                <i class="iconfont">&#xe656;</i>
+                                <span>负载均衡</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="smsList">
+                                <i class="iconfont">&#xe642;</i>
+                                <span>短信服务</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="iotcardList">
+                                <i class="iconfont">&#xe603;</i>
+                                <span>物联卡</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="accountList">
+                                <i class="iconfont">&#xe660;</i>
+                                <span>财务信息</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="listList">
+                                <i class="iconfont">&#xe668;</i>
+                                <span>备案白名单</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ysList">
+                                <i class="iconfont">&#xe666;</i>
+                                <span>用户信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="second_level_menu">
+            <ul>
+                <li>
+                    <a href="概览.html">概 览</a>
+                </li>
+                <li>
+                    <a href="问答广场.html">问答广场</a>
+                </li>
+                <li>
+                    <a href="答题中心.html" class="active">答题中心</a>
+                </li>
+                <li>
+                    <a href="佣金明细.html">佣金明细</a>
+                </li>
+                <li>
+                    <a href="提现管理.html">提现管理</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+    <div id="appLoading-mask" style="display: none"></div>
+    <div id="appLoading" style="display: none">
+        <div class="loadEffect">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <!-- Page -->
+    <!-- Page -->
+    <div class="page animsition" style="animation-duration: 800ms; opacity: 1;">
+        <div class="page-content padding-30 container-fluid">
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+                <div class="identify quiz_module">
+                    <div class="breadcrumb">
+                        <ul>
+                            <li>
+                                <a href="答题中心.html">答题中心</a>
+                                <i>></i>
+                            </li>
+                            <li>
+                                <a href="javascript:;">编辑回答</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="editorial_wrapper">
+                        <div class="editorial_head">
+                            <div class="editorial_question">
+                                <div class="editorial_title">云服务器哪家强？就到广州选亿速专业成熟的技术团队</div>
+                                <div class="editorial_tag">
+                                    <span>云服务器</span>
+                                    <span>云服务器</span>
+                                    <span>云服务器</span>
+                                </div>
+                            </div>
+                            <div class="editorial_earnings">佣金: ¥6</div>
+                        </div>
+                        <div class="editorial_answer">
+                            <div class="editorial_answer_left">
+                                <div class="left_msg">
+                                    <p class="answer">
+                                        <span>简略回答</span>
+                                        <span class="editorial_icon" data-toggle="tooltip" title="简略回答"
+                                            data-placement="right" data-trigger="hover">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-yiwenbeifen"></use>
+                                            </svg>
+                                        </span>
+                                    </p>
+                                    <p class="answer_msg">
+                                        <span>简要并且概括的回答问题</span>
+                                        <a href="查看示例.html">查看示例</a>
+                                    </p>
+                                </div>
+                                <div class="editorial_content">
+                                    <p class="a"></p>
+                                    <textarea name="" id="short_answers" placeholder="请在此处输入回答内容"></textarea>
+                                    <p class="words_number">
+                                        <span class="number">0</span>
+                                        <span>/800</span>
+                                    </p>
+                                </div>
+
+
+                            </div>
+                            <div class="editorial_answer_right">
+                                <p class="text_mount">
+                                    <span>示例</span>
+                                    <a href="回答规范.html">阅读回答规则>></a>
+                                </p>
+                                <p>问题：云服务器哪家强？就到广州选亿速专业成熟的技术团队?</p>
+                                <p class="text_mount">简略回答:</p>
+                                <p>鼠标移入:展示注释内容,鼠标移出:隐藏注释内容，点击查看示例，进入示例页面。鼠标移入:展示注释内容,鼠标移出:隐藏注释内容，点击查看示例，进入示例页面</p>
+                            </div>
+
+                        </div>
+
+                        <div class="editorial_answer">
+                            <div class="editorial_answer_left">
+                                <div class="left_msg">
+                                    <p class="answer">
+                                        <span>详细回答</span>
+                                        <span class="editorial_icon" data-toggle="tooltip" title="详细回答"
+                                            data-placement="right" data-trigger="hover">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-yiwenbeifen"></use>
+                                            </svg>
+                                        </span>
+                                    </p>
+                                    <p>简要并且概括的回答问题</p>
+                                </div>
+                                <div class="editorial_content">
+                                    <script type="text/javascript" id="editor" style="width: 100%;"></script>
+                                </div>
+
+                            </div>
+                            <div class="editorial_answer_right">
+                                <p class="text_mount">示例</p>
+                                <p>问题：云服务器哪家强？就到广州选亿速专业成熟的技术团队?</p>
+                                <p class="text_mount">简略回答:</p>
+                                <p>鼠标移入:展示注释内容,鼠标移出:隐藏注释内容，点击查看示例，进入示例页面。鼠标移入:展示注释内容,鼠标移出:隐藏注释内容，点击查看示例，进入示例页面</p>
+                            </div>
+                        </div>
+
+                        <div class="editorial_btn">
+                            <button class="save">保 存</button>
+                            <button class="back" data-toggle="modal" data-target="#edit_back">返 回</button>
+                            <button class="submit" data-toggle="modal" data-target="#audit_edit">提交审核</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 弹窗 公共修改密码 start -->
+    <script>
+        var phone = '18370862119';
+        var edit_url = '/index.php/vhost/userinfo/editpwd.html';
+
+        function hideShowPsw() {
+            if ($('#setpwd').attr('type') == "password") {
+                $('#setpwd').attr('type', 'text');
+                $('#showimg').attr('src', '/static/img/invisible.png');
+            } else {
+                $('#setpwd').attr('type', 'password');
+                $('#showimg').attr('src', '/static/img/visible.png');
+            }
+        }
+    </script>
+    <div class="modal fade" id="reset_connnn_pwd" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">修改密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts">
+                                <span style="width: 72px;">新密码：</span>
+                                <img id="showimg" onclick="hideShowPsw()" src="/static/img/visible.png"
+                                    style="width: 20px;height: 13px;position: absolute;right: 50px;margin: 12px;">
+                                <input type="password" autocomplete="off" maxlength="20" placeholder="新密码长度范围:6-20位"
+                                    id="setpwd" name="setpwd" value="" />
+                                <div class="error_box pwd_error_box">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>密码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ipts">
+                                <span>手机验证码：</span><input type="text" autocomplete="off" placeholder="请输入手机验证码"
+                                    style="width: 180px;" id="qq_code2" />
+                                <button type="button" class="setnsms" id="getCode2"
+                                    style="height: 36px;margin-left: 10px;color: #FF6666;border: 1px solid #FF6666;background-color: #fff;">点击发送验证码</button>
+                                <p class="get_code_en none" style="margin-top: 2px;"></p>
+                                <div class="error_box pwd_code_error_box" style="left: 417px;">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>验证码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="sendShowbox none"
+                                style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                                验证码已发送到手机<span style="color: #FF6666;" class="dx_phone2">*********</span>短信
+                                ，请查看短信完成验证操作。</div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="set_pwd_sub" class="bind_user_go">确 认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/js/vhost/userinfo_index.js?v=20200619.1"></script>
+
+    <!-- 弹窗 评价客服 start -->
+    <div class="modal fade" id="estimate" aria-hidden="true" aria-labelledby="estimate" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:288px">
+            <div class="modal-content">
+                <div class="modal-body" style="padding:0px;">
+                    <div class="estimate_service">
+                        <div class="title">评价您的专属客服</div>
+                        <div class="star clearfix">
+                            <label for="level_1" class="selected"><input type="radio" name="grade" id="level_1"></label>
+                            <label for="level_2" class="selected"><input type="radio" name="grade" id="level_2"></label>
+                            <label for="level_3" class="selected"><input type="radio" name="grade" id="level_3"
+                                    checked></label>
+                            <label for="level_4"><input type="radio" name="grade" id="level_4"></label>
+                            <label for="level_5"><input type="radio" name="grade" id="level_5"></label>
+                            <div class="star_text">一般</div>
+                        </div>
+                        <textarea placeholder="请填写评价理由"></textarea>
+                        <div class="verify">
+                            <input type="text" autocomplete="off" placeholder="输入手机验证码" maxlength="11">
+                            <!-- 加sent类名为重新获取验证码倒计时样式 -->
+                            <a href="javascript:;" class="sendBtn_fast">获取验证码</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取 消</button>
+                    <button type="button">提 交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 评价客服 end -->
+
+    <!-- 弹窗 更换客服 start -->
+    <div class="modal fade" id="change-service" aria-hidden="true" aria-labelledby="change-service" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:620px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bottom_tips pt_none">
+                        <div style="padding:8px 16px 8px 36px;">
+                            <i class="">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-tishi2"></use>
+                                </svg>
+                            </i>
+                            <p>如果您对当前的客服服务态度不满意，请提交相关的真实聊天记录，我们将视情况为您更换客服。</p>
+                        </div>
+                    </div>
+                    <div class="add_box">
+                        <div class="add_list">
+                            <ul>
+                                <li>
+                                    <span>更换客服原因:</span><textarea id="change_service_reason"
+                                        placeholder="请在此处输入您的问题描述"></textarea>
+                                </li>
+                                <li>
+                                    <span>是否指定客服::</span>
+                                    <div class="sourcenet">
+                                        <input type="radio" name="service" value="1" id="appoint-service" checked><label
+                                            for="appoint-service" class="select_radio">指定客服</label>
+                                        <input type="radio" name="service" value="2" id="random-service"><label
+                                            for="random-service" class="select_radio">随机匹配</label>
+                                    </div>
+                                    <div class="appoint-service-msg">
+                                        <select class="selectpicker" id="change_service_info" style="margin-top: 10px;">
+                                            <option value="QY-10981">小李</option>
+                                            <option value="QY-10985">小褚</option>
+                                            <option value="CC21669717">小阮</option>
+                                            <option value="QY-10989">小黄</option>
+                                            <option value="999220@YS">小琴</option>
+                                            <option value="QY-10132">小邓</option>
+                                            <option value="CC2651324">小虞</option>
+                                            <option value="211567@YS">小张</option>
+                                            <option value="QY-10988">小赖</option>
+                                            <option value="QY-10984">小杨</option>
+                                            <option value="CC2208069">小谢</option>
+                                            <option value="919086@YS">小来</option>
+                                            <option value="CC1848625">小易</option>
+                                            <option value="CC1848603">小罗</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>上传相关聊天记录:</span>
+                                    <div class="upbox clearfix">
+                                        <div class="upbox_left">
+
+                                            <div class="upbox_item add_upload">
+                                                <!-- has_error 错误样式-->
+                                                <a href="javascript:;">
+                                                    <input id="chat_record" type="file" multiple="multiple">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use xlink:href="#icon-shangchuan-zhaopian"></use>
+                                                    </svg>
+                                                    <p>上传文件</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>短信验证码:</span>
+                                    <div class="common-verify-box"><input id="change_service_code" type="text"
+                                            placeholder="请输入验证码"><a id="getChangeServiceCode"
+                                            href="javascript:;">获取验证码</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sendShowbox none"
+                        style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                        <span class="dx_phone_bb none">验证码已发送到手机<span style="color: #FF6666;"
+                                class="dx_phone">*********</span>短信 ，请查看短信完成验证操作。</span>
+                        <br />
+                        <span class="dx_phone_email_bb none">验证邮件已发送到邮箱<span
+                                class="dx-phone-email3">******@qq.com</span> ，请<a href="javascript:;" target="_blank"
+                                id="logemail2" style="color:#5E6D81;">登录邮箱</a>完成验证操作。</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" class="change-service-submit">提 交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服 end -->
+
+    <!-- 弹窗 更换客服审核进度 start -->
+    <div class="modal fade" id="change-service-audit" aria-hidden="true" aria-labelledby="open_server" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:604px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服进度查询</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="apply-audit-tip">您已经提交更换客服申请，请耐心等待系统审核</div>
+                    <div class="add_box">
+                        <div class="add_list">
+                            <ul>
+                                <li>
+                                    <span>提交申请时间:</span>
+                                    <div class="change-apply-date">1970-01-01 08:00:00</div>
+                                    <p class="withdraw-apply">30分钟内您可以 <a href="javascript:;"
+                                            onclick="revokeChangeService();">撤销更换客服操作</a></p>
+                                </li>
+                                <li>
+                                    <span>更换客服原因:</span>
+                                    <div class="change-service-reson"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">确 定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服审核进度 end -->
+
+    <!-- 弹窗 更换客服成功 start -->
+    <div class="modal fade" id="change-service-success" aria-hidden="true" aria-labelledby="open_server" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:604px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="surebox">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-chenggong-danchuang"></use>
+                        </svg>
+                        <div>提交成功</div>
+                        <p>您已经成功提交售前客服更换申请，我们将在2个工作日内完成更换客服的审核，如有问题请联系我们的售后人员。</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">确 定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服成功 end -->
+
+
+    <!-- 自定义菜单栏 2020-02-18 start -->
+    <div class="navdiy-main">
+        <div class="navdiy-main-box">
+            <div class="navdiy-main-nav">
+                <div class="main-nav-item-box" id="sortmenu">
+                    <div class="main-nav-item" data-value="cloud">
+                        <a class="handle" href="javascript:;">云服务器</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ddosnew">
+                        <a class="handle" href="javascript:;">安全防护</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ddoscdn">
+                        <a class="handle" href="javascript:;">高防CDN</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="physicsserver">
+                        <a class="handle" href="javascript:;">裸金属服务器</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ssl">
+                        <a class="handle" href="javascript:;">SSL证书</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="dns">
+                        <a class="handle" href="javascript:;">DNS解析</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="rds">
+                        <a class="handle" href="javascript:;">云数据库</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="cdn">
+                        <a class="handle" href="javascript:;">CDN加速</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="dcdn">
+                        <a class="handle" href="javascript:;">全站加速</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="slb">
+                        <a class="handle" href="javascript:;">负载均衡</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="sms">
+                        <a class="handle" href="javascript:;">短信服务</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="iotcard">
+                        <a class="handle" href="javascript:;">物联卡</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="navdiy-main-menu">
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c2;</i><span>云计算</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="cloud" id="cloud" checked><label id="cloud_label" for="cloud"
+                                class="select_checkbox">云服务器</label>
+                            <input type="checkbox" value="physicsserver" id="physicsserver" checked><label
+                                id="physicsserver_label" for="physicsserver" class="select_checkbox">裸金属服务器</label>
+                            <input type="checkbox" value="slb" id="slb" checked><label id="slb_label" for="slb"
+                                class="select_checkbox">负载均衡</label>
+                        </div>
+                    </div>
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c4;</i><span>通信</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="sms" id="sms" checked><label id="sms_label" for="sms"
+                                class="select_checkbox">短信服务</label>
+                            <input type="checkbox" value="iotcard" id="iotcard" checked><label id="iotcard_label"
+                                for="iotcard" class="select_checkbox">物联卡</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c5;</i><span>数据库与CDN加速</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="cdn" id="cdn" checked><label id="cdn_label" for="cdn"
+                                class="select_checkbox">CDN加速</label>
+                            <input type="checkbox" value="dcdn" id="dcdn" checked><label id="dcdn_label" for="dcdn"
+                                class="select_checkbox">全站加速</label>
+                            <input type="checkbox" value="rds" id="rds" checked><label id="rds_label" for="rds"
+                                class="select_checkbox">云数据库</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c3;</i><span>云安全</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="dns" id="dns" checked><label id="dns_label" for="dns"
+                                class="select_checkbox">DNS解析</label>
+                            <input type="checkbox" value="ssl" id="ssl" checked><label id="ssl_label" for="ssl"
+                                class="select_checkbox">SSL证书</label>
+                            <input type="checkbox" value="ddos" id="ddos"><label id="ddos_label" for="ddos"
+                                class="select_checkbox">高防IP</label>
+                            <input type="checkbox" value="ddosnew" id="ddosnew" checked><label id="ddosnew_label"
+                                for="ddosnew" class="select_checkbox">安全防护</label>
+                            <input type="checkbox" value="ddoscdn" id="ddoscdn" checked><label id="ddoscdn_label"
+                                for="ddoscdn" class="select_checkbox">高防CDN</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navdiy-footer">
+                <div class="navdiy-footer-text">自定义产品到侧导航栏，拖动色块可调整顺序</div>
+                <div class="navdiy-footer-button"><button type="button" class="cancel close-navdiy-main">取
+                        消</button><button id="navdiy_submit" type="button">保存编辑</button></div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义菜单栏 2020-02-18 end -->
+
+
+
+
+    <!-- 弹窗 提交审核 start-->
+    <div class="modal fade" id="audit_edit" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:370px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">提醒</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <svg class="icon tips_icon" aria-hidden="true">
+                                <use xlink:href="#icon-jinggao-danchuang"></use>
+                            </svg>
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="setinfo">
+                                <p>确定提交审核吗？</p>
+                                <p>提交审核后将无法对内容进行修改</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取消</button>
+                    <button type="button" data-dismiss="modal">提交</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 弹窗 提交审核 end -->
+
+
+    <!-- 弹窗 返回 start-->
+    <div class="modal fade" id="edit_back" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:370px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">提醒</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <svg class="icon tips_icon" aria-hidden="true">
+                                <use xlink:href="#icon-jinggao-danchuang"></use>
+                            </svg>
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="setinfo">
+                                <p>是否确定返回？</p>
+                                <p>返回后编辑框中的内容无法自动保存</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取消</button>
+                    <button type="button" id="confirm_back" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 弹窗 返回 end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cache.yisu.com/user/uiqy/newJs/bootstrap.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/jquery.asScrollable.all.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/core.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/site.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/menu.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/menubar.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/common.js?v=20200616.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/backstage.js?v=20200831.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/navdiy.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/sortable.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/bootstrap-select.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/change-service.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/laydate/laydate.js?v=20210106.2"></script>
+    <script src="js/user_quiz.js"></script>
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="https://ys2018.yisu.com/static/uiys/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="https://ys2018.yisu.com/static/uiys/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript" src="https://ys2018.yisu.com/static/uiys/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor', {
+            toolbars: [
+                [
+                    'source', 'fullscreen',
+                    'bold', 'italic', 'underline',
+                    'strikethrough',
+                    'blockquote',
+                    '|',
+                    'insertorderedlist', 'insertunorderedlist',
+                    '|',
+                    'paragraph',
+                    'fontsize', '|',
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    '|',
+                    'link',
+                    '|',
+                    'insertimage',
+                    'insertvideo',
+                    'insertcode',
+                    '|',
+                    'inserttable',
+                    '|',
+                    'preview',
+                ]
+            ],
+            onready: function () {
+                this.execCommand("insertHtml", $("#temp_answer").html())
+            },
+            //    serverUrl: '/doc/ueditor/index',
+        });
+
+        var selected_qas = ["1653", "1655", "1681", "1705", "1707", "1713", "1715", "1717", "1727"];
+    </script>
+
+
+
+
+    <script type="text/javascript">
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0910b1e24e81c0e61462b7a766830fec";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        try {
+            $(function ($) {
+                $.getJSON('https://yisuapi.yisu.com/index.php/Speed/Uc/checkLogin/?callback=?', function (
+                    res) {});
+                $('.side-' + ysconst.module + '-' + ysconst.controller).addClass('active');
+
+                $('.bind_status .item').hover(function () {
+                    $(this).children('.bubble').show().parent().siblings().children('.bubble').hide();
+                }, function () {
+                    $(this).children('.bubble').hide()
+                })
+
+                $('.cancel').click(function () {
+                    $('#eamil_bind').hide();
+                });
+
+                var sortmenu = document.getElementById('sortmenu');
+                new Sortable(sortmenu, {
+                    handle: '.handle',
+                    animation: 300
+                });
+            });
+            //导航切换锁定
+            $('#ysList').addClass('active');
+            $('.ysList li').eq(4).children('a').addClass('active');
+            $('.ysList').show();
+
+            function consultation(qq) {
+                window.open('https://wpa.qq.com/msgrd?v=3&uin=' + qq + '&site=qq&menu=yes');
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+        var mainUrls = {
+            getUserGroup: '/index.php/vhost/usergroup/getgroupbyproductidandtype.html',
+            setUserGroup: '/index.php/vhost/usergroup/editgroupbyproductidandtype.html',
+        };
+
+        $('#logout').click(function (e) {
+            e.preventDefault();
+            var url = 'https://yisuapi.yisu.com/index.php/Speed/Uc/logout/?callback=?';
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "jsonp",
+                success: function (res) {
+                    if (res == 1) {
+                        // alert( "退出登录成功！" );
+                        // window.location.reload();
+                        $.yisu_alert_success({
+                            "cont": "退出登录成功！"
+                        });
+                        window.setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        alert(ERROR_LOGOUT);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

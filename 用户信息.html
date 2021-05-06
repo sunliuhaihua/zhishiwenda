@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <title>用户信息 - 亿速云计算管理平台</title>
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <link rel="shortcut icon" href="https://cache.yisu.com/user/uiqy/newImages/favicon.ico">
+    <link rel="apple-touch-icon" href="https://cache.yisu.com/user/uiqy/newImages/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://cache.yisu.com/user/uiqy/newImages/favicon.ico">
+    <script src="https://cache.yisu.com/user/uiqy/newJs/iconfont.js?v=20201210.2" type="text/javascript"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/bootstrap.min.css?v=20190921.01">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/common.css?v=20200807.14">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/backstage.css?v=20201117.1">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/bootstrap-select.css">
+    <link rel="stylesheet" href="https://cache.yisu.com/user/uiqy/newCss/change-service.css">
+    <script src="https://cache.yisu.com/user/uiqy/newJs/breakpoints.min.js"></script>
+    <link href="https://cache.yisu.com/user/uiqy/vendor/switchery/switchery.css?v=20210330.1" type="text/css"
+        rel="stylesheet" />
+    <script src="https://cache.yisu.com/user/uiqy/vendor/breakpoints/breakpoints.js?v=20210330.1"></script>
+    <link rel="stylesheet" href="css/userInfo.css">
+
+    <script>
+        var ysconst = {};
+        ysconst.statis = '/static/';
+        ysconst.module = 'vhost';
+        ysconst.controller = 'userinfo';
+        ysconst.action = 'index';
+        Breakpoints();
+    </script>
+    <!--[if lt IE 10]>
+       <style>
+           .charge_right a{
+               background: #FF6666;
+           }
+       </style>
+   <![endif]-->
+</head>
+
+<body>
+    <script type="text/javascript">
+        var browser = navigator.appName,
+            version = navigator.appVersion.split(";"),
+            browserWarn = '/browser_warn.html',
+            errorMsg = '对不起，您的IE浏览器版本过低，请升级IE浏览器或使用其它内核的浏览器';
+
+        if (version[1] !== undefined) {
+            version = version[1].replace(/[ ]/g, "");
+            if (browser == "Microsoft Internet Explorer" && version == "MSIE6.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            } else if (browser == "Microsoft Internet Explorer" && version == "MSIE7.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            } else if (browser == "Microsoft Internet Explorer" && version == "MSIE8.0") {
+                //window.location.href = browserWarn;
+                alert(errorMsg);
+            }
+        }
+    </script>
+    <div class="nav">
+        <div class="logo"><img src="https://cache.yisu.com/user/uiqy/newImages/logo.png" alt=""></div>
+        <!-- 自定义菜单栏 2020-02-18 start -->
+        <div class="navdiy">
+            <div class="navdiy-icon">
+                <i class="iconfont">&#xe65b;</i>
+                <div class="navdiy-bubble">自定义侧导航</div>
+            </div>
+        </div>
+        <!-- 自定义菜单栏 2020-02-18 end -->
+        <div class="user">
+            <div class="user_img"></div>
+            <span class="username">YS722374</span>
+            <span class="remark"></span>
+            <i></i>
+            <div class="user_link">
+                <ul>
+                    <li>
+                        <a href="https://uc.yisu.com/Vhost/userinfo">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-yonghuzhongxin"></use>
+                            </svg>
+                            <span>用户中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://uc.yisu.com/Vhost/account">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-caiwuzhanghu"></use>
+                            </svg>
+                            <span>财务账户</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="reset reset_connnn_pwd">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-zhongzhixitongmima"></use>
+                            </svg>
+                            <span>修改密码</span>
+                        </a>
+                    </li>
+                    <!--关闭旧后台-->
+                    <li>
+                        <a href="javascript:;" id="logout">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-xiezai"></use>
+                            </svg>
+                            <span>退出登录</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="convenient clearfix">
+            <div class="item">
+                <i class="itme-service-tit" style="line-height: 66px;">专属客服 &gt;&gt;</i>
+                <span class="iconfont">&#xe6b9;</span>
+                <div class="item_dropmenu service_box">
+                    <div class="service-tit-des">
+                        <p>专属客服<span>扫描下方二维码添加客服微信</span></p>
+                    </div>
+                    <div class="head">
+                        <div class="head-service-msg">
+                            <div class="ewm">
+                                <img src="https://cache.yisu.com/upload/admin/user_qrcode_img/2019-05-01/1556644830.jpg"
+                                    alt="">
+                            </div>
+                            <ul>
+                                <li>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-yonghuzhongxin"></use>
+                                    </svg>
+                                    <span class="service_name">公司</span>
+                                </li>
+                                <li>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-lianxidianhua"></use>
+                                    </svg>
+                                    <span>400-100-2938</span>
+                                </li>
+                                <li onclick="consultation('800811969');">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-QQ"></use>
+                                    </svg>
+                                    <span>800811969</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="service_edit" style="margin-top: 22px">
+                            <button type="button" id="change-service-btn" data-toggle="modal"
+                                data-target="#change-service">更换客服</button>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <ul class="clearfix">
+                            <li>购买、续费更优惠</li>
+                            <li>异常、告警先知会</li>
+                            <li>服务器资源使用实时看</li>
+                            <li>灵活稳定高性能成本低</li>
+                            <li>24h售后: 800-811-969</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="item charge_item">
+                <span class="iconfont">&#xe67c;</span>
+                <div class="item_dropmenu charge_dropmenu">
+                    <div class="charge_content">
+                        <p>账户余额</p>
+                        <div class="accountbox">
+                            <span>0</span><a href="https://www.yisu.com/recharge/">充 值</a>
+                        </div>
+                        <div class="linkturn clearfix">
+                            <a href="/index.php/vhost/coupon.html">代金券</a>
+                            <!--<a href="#">续 费</a>-->
+                            <a href="/index.php/vhost/invoice.html">发 票</a>
+                        </div>
+                        <div class="link_list">
+                            <ul>
+                                <li><a href="/index.php/vhost/order.html?protype=index">我的订单</a></li>
+                                <li><a href="/index.php/vhost/account.html">收支明细</a></li>
+                                <!--<li><a href="#">资源账单</a></li>
+                            <li><a href="#">合同管理</a></li>-->
+                            </ul>
+                        </div>
+                        <div class="link_list bb_none">
+                            <ul>
+                                <li><a href="/index.php/vhost/account.html">费用中心</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-menubar">
+        <div class="site-menubar-body">
+            <div class="menu-list-box" id="menu_box">
+                <div class="first-level-menu">
+                    <ul class="site-menu">
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="userList">
+                                <i class="iconfont">&#xe667;</i>
+                                <span>概况</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="cloudList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>云服务器</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ddosnewList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>安全防护</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ddoscdnList">
+                                <i class="iconfont">&#xe665;</i>
+                                <span>高防CDN</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="physicsList">
+                                <i class="iconfont">&#xe65d;</i>
+                                <span>裸金属</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="sslList">
+                                <i class="iconfont">&#xe6b4;</i>
+                                <span>SSL证书</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="dnsList">
+                                <i class="iconfont">&#xe633;</i>
+                                <span>DNS解析</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="rdsList">
+                                <i class="iconfont">&#xe641;</i>
+                                <span>云数据库</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="cdnList">
+                                <i class="iconfont">&#xe637;</i>
+                                <span>CDN加速</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="dcdnList">
+                                <i class="iconfont">&#xe6cd;</i>
+                                <span>全站加速</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="slbList">
+                                <i class="iconfont">&#xe656;</i>
+                                <span>负载均衡</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="smsList">
+                                <i class="iconfont">&#xe642;</i>
+                                <span>短信服务</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="iotcardList">
+                                <i class="iconfont">&#xe603;</i>
+                                <span>物联卡</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="accountList">
+                                <i class="iconfont">&#xe660;</i>
+                                <span>财务信息</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="listList">
+                                <i class="iconfont">&#xe668;</i>
+                                <span>备案白名单</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="javascript:;" id="ysList">
+                                <i class="iconfont">&#xe666;</i>
+                                <span>用户信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="second_level_menu ">
+            <ul class="userList none">
+                <li><a href="/index.php/vhost.html">账号总览</a></li>
+            </ul>
+            <ul class="cloudList none">
+                <li><a href="https://uc.yisu.com/index.php/vhost/instance">云服务器</a></li>
+                <li><a href="/index.php/vhost/storage.html"> 云 磁 盘</a></li>
+                <li><a href="/index.php/vhost/snapshot.html"> 快&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照</a></li>
+                <li><a href="/index.php/vhost/safegroup.html"> 安 全 组</a></li>
+                <li><a href="/index.php/vhost/snaptactics.html">快照策略</a></li>
+                <li><a href="/index.php/vhost/order.html?protype=cloud"> 订&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单</a></li>
+                <li><a href="/index.php/vhost/ip.html?protype=cloud"> IP带宽</a></li>
+            </ul>
+            <ul class="ddosnewList none">
+                <li><a href="/index.php/vhost/ddosnew.html">高防IP</a></li>
+                <li><a href="/index.php/vhost/defenseweb.html">网站防护</a></li>
+                <li><a href="/index.php/vhost/defensetcp.html">非网站防护</a></li>
+                <li><a href="/index.php/vhost/defenselog.html">访问日志</a></li>
+                <li><a href="/index.php/vhost/order.html?protype=ddosnew">订&nbsp;&nbsp;&nbsp;&nbsp;单</a></li>
+            </ul>
+            <ul class="ddoscdnList none">
+                <li><a href="/index.php/ddoscdn/instance.html">高防实例</a></li>
+                <li><a href="/index.php/ddoscdn/web.html">网站防护</a></li>
+                <li><a href="/index.php/ddoscdn/ddoscdnlog.html">访问日志</a></li>
+                <li><a href="/index.php/vhost/order.html?protype=ddoscdn">订&nbsp;&nbsp;&nbsp;&nbsp;单</a></li>
+            </ul>
+            <ul class="physicsList none">
+                <li><a href="/index.php/vhost/physicsserver.html">裸金属</a></li>
+                <li><a href="/index.php/vhost/physicalsafegroup.html"> 安 全 组</a></li>
+                <li><a href="/index.php/vhost/order.html?protype=phy">订&nbsp;&nbsp;&nbsp;&nbsp;单</a></li>
+                <li><a href="/index.php/vhost/ip.html?protype=phy"> IP带宽</a></li>
+            </ul>
+            <ul class="ddosList none">
+            </ul>
+            <ul class="ipList none">
+                <li><a href="/index.php/vhost/ip.html">IP带宽</a></li>
+                <li><a href="/index.php/vhost/order.html?protype=ip">订&nbsp;&nbsp;&nbsp;&nbsp;单</a></li>
+            </ul>
+            <ul class="sslList none">
+                <li> <a href="/index.php/vhost/ssl.html"> SSL证书 </a> </li>
+                <li> <a href="/index.php/vhost/order.html?protype=ssl"> 订&nbsp;&nbsp;&nbsp;&nbsp;单 </a> </li>
+            </ul>
+            <ul class="iotcardList none">
+                <li> <a href="/index.php/iotcard/iotcard.html"> 概&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;览 </a> </li>
+                <li> <a href="/index.php/iotcard/card.html"> 物&nbsp;联&nbsp;卡 </a> </li>
+                <li> <a href="/index.php/iotcard/order.html?protype=iotcard"> 订&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单 </a>
+                </li>
+                <li> <a href="/index.php/iotcard/flowpool.html"> 流&nbsp;量&nbsp;池 </a> </li>
+                <li> <a href="/index.php/iotcard/shipping.html"> 收货地址 </a> </li>
+            </ul>
+
+            <ul class="rdsList none">
+                <li> <a href="/index.php/clouddb/rds.html"> 数据库RDS </a> </li>
+                <li> <a href="/index.php/clouddb/redis.html"> 数据库Redis </a> </li>
+                <li> <a href="/index.php/vhost/memcache.html"> Memcache </a> </li>
+                <li> <a href="/index.php/clouddb/mongodb.html"> MongoDB </a> </li>
+                <li> <a href="/index.php/vhost/order.html?protype=clouddb"> 订&nbsp;&nbsp;&nbsp;&nbsp;单 </a> </li>
+                <li> <a href="/index.php/clouddb/dts/task_list.html">数 据 迁 移</a> </li>
+                <li> <a href="/index.php/clouddb/dms/login.html">数据库登录</a> </li>
+            </ul>
+
+            <ul class="dnsList none">
+                <li> <a href="/index.php/vhost/dns.html"> 解析列表 </a> </li>
+                <li> <a href="/index.php/vhost/dnspackage.html"> 解析套餐 </a> </li>
+                <li> <a href="/index.php/vhost/dnscount.html"> 请求量统计 </a> </li>
+                <li> <a href="/index.php/vhost/order.html?protype=dns"> 订&nbsp;&nbsp;&nbsp;&nbsp;单 </a> </li>
+                <li> <a href="/index.php/vhost/dnsoperations.html"> 批量记录 </a> </li>
+                <!--                <li> <a href="-->
+                <!--"> 子域名管理 </a> </li>-->
+            </ul>
+
+            <ul class="slbList none">
+                <li> <a href="/index.php/vhost/slb.html"> 实例管理 </a> </li>
+                <li> <a href="/index.php/vhost/slbssl.html"> 证书管理 </a> </li>
+                <li> <a href="/index.php/vhost/slbmac.html"> 访问控制 </a> </li>
+                <li> <a href="/index.php/vhost/order.html?protype=slb"> 订&nbsp;&nbsp;&nbsp;&nbsp;单 </a> </li>
+            </ul>
+
+            <ul class="smsList none testabc">
+                <li><a href="/index.php/vhost/smscount.html">总览</a></li>
+                <li><a href="/index.php/vhost/smspackage.html">短信套餐</a></li>
+                <li><a href="/index.php/vhost/smstemplate.html">短信模板</a></li>
+                <li><a href="/index.php/vhost/smssignature.html">短信签名</a></li>
+                <li><a href="/index.php/vhost/smscode.html">验证短信</a></li>
+                <li><a href="/index.php/vhost/smsnotice.html">通知短信</a></li>
+                <li><a href="/index.php/vhost/smsmarketing.html">营销短信</a></li>
+                <li><a href="/index.php/vhost/smscontacts.html">通信录</a></li>
+                <li><a href="/index.php/vhost/smssetting.html">短信设置</a></li>
+                <li> <a href="/index.php/vhost/order.html?protype=sms"> 订&nbsp;&nbsp;&nbsp;&nbsp;单 </a> </li>
+            </ul>
+
+            <ul class="accountList none">
+                <li><a href="/index.php/vhost/account.html">费用中心</a></li>
+                <li><a href="/index.php/vhost/invoice.html">发票管理</a></li>
+            </ul>
+            <ul class="listList none">
+                <li><a href="/index.php/vhost/whitelist.html">白名单</a></li>
+            </ul>
+            <ul class="ysList none">
+                <li><a href="/index.php/vhost/userinfo.html">用户信息</a></li>
+                <li><a href="/index.php/vhost/actionlog.html">操作日志</a></li>
+                <li><a href="/index.php/vhost/coupon.html">优 惠 券</a></li>
+                <li><a href="/index.php/vhost/accesskey.html">AccessKey</a></li>
+                <li><a href="/index.php/vhost/identifi/certification.html">实名认证</a></li>
+            </ul>
+            <ul class="cdnList none">
+                <li><a href="/index.php/cdn/overview.html">CDN概览</a></li>
+                <li><a href="/index.php/cdn/domain.html">域名管理</a></li>
+                <li><a href="/index.php/cdn/refresh.html">刷新预热</a></li>
+                <li><a href="/index.php/cdn/resourcemonitor.html">资源监控</a></li>
+                <li><a href="/index.php/cdn/realtimemonitor.html">实时监控</a></li>
+                <li><a href="/index.php/cdn/stat.html">统计分析</a></li>
+                <li><a href="/index.php/cdn/usage.html">用量查询</a></li>
+                <li><a href="/index.php/cdn/log/service.html">日志管理</a></li>
+                <li><a href="/index.php/cdn/resourceorder.html">订单管理</a></li>
+                <li><a href="/index.php/cdn/setting.html">CDN设置</a></li>
+            </ul>
+            <ul class="dcdnList none">
+                <li><a href="/index.php/dcdn/overview.html">概览</a></li>
+                <li><a href="/index.php/dcdn/domain.html">域名管理</a></li>
+                <li><a href="/index.php/dcdn/refresh.html">刷新预热</a></li>
+                <li><a href="/index.php/dcdn/resourcemonitor.html">资源监控</a></li>
+                <li><a href="/index.php/dcdn/realtimemonitor.html">实时监控</a></li>
+                <li><a href="/index.php/dcdn/stat.html">统计分析</a></li>
+                <li><a href="/index.php/dcdn/usage.html">用量查询</a></li>
+                <li><a href="/index.php/dcdn/log/service.html">日志管理</a></li>
+                <li><a href="/index.php/dcdn/resourceorder.html">订单管理</a></li>
+                <li><a href="/index.php/dcdn/websocket.html">Websocket</a></li>
+                <li><a href="/index.php/dcdn/setting.html">DCDN设置</a></li>
+            </ul>
+            <ul class="liveList none">
+                <li><a href="/index.php/live/overview.html">直播概览</a></li>
+                <li><a href="/index.php/live/manage.html">直播管理</a></li>
+                <li><a href="/index.php/live/domain.html">域名管理</a></li>
+                <li><a href="/index.php/live/resourcemonitor.html">资源监控</a></li>
+                <!--            <li><a href="-->
+                <!--">实时监控</a></li>-->
+                <li><a href="/index.php/live/stat.html">统计分析</a></li>
+                <li><a href="/index.php/live/usage.html">用量查询</a></li>
+                <li><a href="/index.php/live/log/service.html">日志管理</a></li>
+                <li><a href="/index.php/live/resourceorder.html">订单管理</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="appLoading-mask" style="display: none"></div>
+    <div id="appLoading" style="display: none">
+        <div class="loadEffect">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <!-- Page -->
+
+    <style>
+        .setnsms {
+            /*width: 130px;*/
+            height: 36px;
+            margin-left: 10px;
+            color: #FF6666;
+            border: 1px solid #FF6666;
+            background-color: #fff;
+        }
+
+        .setnsms:hover {
+            background-color: transparent;
+        }
+
+        .switchery-default {
+            border-color: #BDC5D3 !important;
+        }
+
+        .setting_list ul li .switchery small {
+            box-shadow: 0 0px 3px rgba(0, 0, 0, .5) !important;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+    <!-- Page -->
+    <div class="page animsition" style="animation-duration: 800ms; opacity: 1;">
+        <div class="page-content container-fluid">
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+                <div class="settingbox">
+                    <div class="userbox clearfix">
+                        <div class="head_img"></div>
+                        <div class="head_text">
+                            <div class="user">
+                                <span class="user_name">上官碧玉</span>
+                                <span class="user_auth">已认证</span>
+                            </div>
+                            <p class="user_id">ID:Ys_13895788558</p>
+                        </div>
+                        <div class="charge_right" style="margin-left:356px;width:88px;">
+                            <a href="/index.php/vhost/account.html" class="cost">费用中心</a>
+                            <a href="https://www.yisu.com/recharge/">充 值</a>
+                        </div>
+                    </div>
+                    <div class="setting_list">
+                        <div class="setting_list_item">
+                            <p class="setting_title">账户安全</p>
+                            <ul>
+                                <li>
+                                    <div class="w_168">登录密码</div>
+                                    <div class="w_490">安全性高的密码可以使账户更安全，建议您定期更换密码</div>
+                                    <div class="reset reset_connnn_pwd"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg></div>
+                                </li>
+                                <li class="identify_li">
+                                    <div class="w_168">实名认证</div>
+                                    <div class="w_490">
+                                        <span>认证后可赠送优惠券</span></div><a
+                                        href="/index.php/vhost/identifi/certification.html" class="no">去认证</a>
+                                </li>
+                                <li>
+                                    <div class="w_168">手机号码</div>
+                                    <div class="w_490"><span>13871901586</span></div>
+                                    <div class="reset reset_phone"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg></div>
+                                </li>
+
+                                <li>
+                                    <div class="w_168">手机验证码</div>
+                                    <div class="w_490">重装系统时是否开启手机验证码</div>
+                                    <input type="checkbox" id="inputBasicOn" name="inputiCheckBasicCheckboxes"
+                                        data-plugin="switchery" data-switchery="true" style="display: none;" value="1">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="setting_list_item">
+                            <p class="setting_title">联系方式</p>
+                            <ul>
+                                <li>
+                                    <div class="w_168">常用邮箱</div>
+                                    <div class="w_490">yisu@cloud.com</div>
+                                    <div class="reset eamil_update"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg></div>
+                                </li>
+                                <li>
+                                    <div class="w_168">QQ号码</div>
+                                    <div class="w_490">4981991185</div>
+                                    <div class="reset qq_update"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg></div>
+                                </li>
+                                <li>
+                                    <div class="w_168">售前客服</div>
+                                    <div class="w_490" style="width: 250px;">
+                                        <a href="http://wpa.qq.com/msgrd?v=3&uin=800811969&site=qq&menu=yes"
+                                            target="_blank">QQ: 800811969</a>
+                                    </div>
+                                    <div class="reset" style="width: 210px;">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="setting_list_item">
+                            <p class="setting_title">提现账户</p>
+                            <ul>
+                                <li>
+                                    <div class="w_168">支付宝</div>
+                                    <div class="w_490">
+                                        <span>未绑定</span>
+                                    </div>
+                                    <div class="reset " data-toggle="modal" data-target="#Alipay">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_168">储蓄卡</div>
+                                    <div class="w_490">
+                                        <span>未绑定</span>
+                                    </div>
+                                    <div class="reset " data-toggle="modal" data-target="#bank_card">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiugaimingcheng"></use>
+                                        </svg>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="setting_list_item">
+                            <p class="setting_title">问答专家</p>
+                            <ul>
+                                <li>
+                                    <div class="w_168">
+                                        知识问答
+                                        <span class="new">NEW</span>
+                                    </div>
+                                    <div class="w_490">
+                                        <span>成为亿速云知识问答专家赚现金</span>
+                                    </div>
+                                    <a href="javascript:;" class="no">查看</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+
+    <!-- 弹窗 绑定邮箱 and 邮箱修改 start -->
+    <div class="modal fade" id="eamil_update" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <input type="text" value="" name="seteamilgoCode_one" id="seteamilgoCode_one" readonly hidden="">
+        <input type="text" value="" name="seteamilgoCode_two" id="seteamilgoCode_two" readonly hidden="">
+        <div class="modal-dialog modal-center" style="width:500px;position: relative;">
+            <div class="seteamilgo_one modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">邮箱修改-第一步</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts">
+                                <span style="margin-bottom: 7px;">旧邮箱：</span><input type="text" autocomplete="off"
+                                    placeholder="请输入旧的QQ邮箱" id="old_email" value="" style="width: 330px;"><br />
+                                <div class="error_box old_email_error_box">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>错误</span></div>
+                                </div>
+                                <span>邮件验证码：</span>
+                                <input type="text" autocomplete="off" placeholder="请输入验证码" id="email_code" value=""
+                                    style="width: 180px;">
+                                <a href="javascript:;" class="only_emailGoset" id="only_email"
+                                    style="width: 130px;">点击获取验证邮件</a>
+                                <p class="none" id="setcode"></p>
+                                <div class="error_box email_code_error_box" style="top: 43px;">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>错误</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sent_eamil sendShowbox none">验证邮件已发送到邮箱<span class="dx-email">******@qq.com</span> ，请<a
+                            href="javascript:;" target="_blank" id="logemail" style="color:#5E6D81;">登录邮箱</a>完成验证操作。
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close_emails_sub button_cancle cancel" data-dismiss="modal">关
+                        闭</button>
+                    <button type="button" id="email_update_sub_one" class="bind_user_go">修 改</button>
+                </div>
+            </div>
+            <div class="seteamilgo_two modal-content none" style="position: absolute;left: 100%;width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">邮箱修改-第二步</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts">
+                                <span style="margin-bottom: 7px;">常用邮箱：</span><input type="text" autocomplete="off"
+                                    placeholder="请输入新的QQ邮箱" id="email" value="" style="width: 330px;"><br />
+                                <div class="error_box new_email_error_box">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>错误</span></div>
+                                </div>
+                                <span>邮件验证码：</span><input type="text" autocomplete="off" placeholder="请输入验证码"
+                                    id="email_code2" value="" style="width: 185px;"><a href="javascript:;"
+                                    id="only_email2" style="width: 130px;">点击获取验证邮件</a>
+                                <p class="none" id="setcode2"></p>
+                                <div class="error_box new_email_code_error_box" style="top: 43px;">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>错误</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sent_eamil sendShowbox none">验证邮件已发送到邮箱<span class="dx-email2">******@qq.com</span> ，请<a
+                            href="javascript:;" target="_blank" id="logemail2" style="color:#5E6D81;">登录邮箱</a>完成验证操作。
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close_emails_sub button_cancle cancel" data-dismiss="modal">关
+                        闭</button>
+                    <button type="button" id="email_update_sub_two" class="bind_user_go">修 改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 绑定邮箱 end -->
+
+    <!-- 弹窗 QQ绑定 and QQ修改 start -->
+    <div class="modal fade" id="qq_update" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">QQ修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts"><span>QQ号码：</span><input type="text" autocomplete="off"
+                                    placeholder="请输入QQ号" id="qq" maxlength="16" value="">
+                                <p class="none gt_qq" style="margin-bottom: 2px;">QQ格式错误</p>
+                                <div class="error_box qq_error_box">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>密码错误</span></div>
+                                </div>
+                            </li>
+                            <li class="ipts">
+                                <span>验证码：</span><input type="text" autocomplete="off" placeholder="请输入手机或者邮箱验证码"
+                                    style="width: 180px;" id="qq_code" />
+                                <button type="button" class="setnsms" id="getCode1"
+                                    class="only_setqqGoset">点击发送验证码</button>
+                                <div class="error_box qq_phone_error_box">
+                                    <div class="error_content"><svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg><span>密码错误</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="sendShowbox none"
+                            style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                            <span class="dx_phone_bb none">验证码已发送到手机<span style="color: #FF6666;"
+                                    class="dx_phone">*********</span>短信 ，请查看短信完成验证操作。</span>
+                            <br />
+                            <span class="dx_phone_email_bb none">验证邮件已发送到邮箱<span
+                                    class="dx-phone-email3">******@qq.com</span> ，请<a href="javascript:;"
+                                    target="_blank" id="logemail2" style="color:#5E6D81;">登录邮箱</a>完成验证操作。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="qq_update_sub" class="bind_user_go">修 改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 QQ绑定 end -->
+
+    <!-- 弹窗 修改手机 start -->
+    <div class="modal fade" id="reset_phone" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:500px;position: relative;">
+            <div class="setphonego_one modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">修改手机-第一步</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts" style="margin-bottom: 7px;">
+                                <span style="width: 72px;">旧手机号：</span>
+                                <input type="text" autocomplete="off" maxlength="11" placeholder="旧手机长度范围:11位"
+                                    id="old_setphone" name="old_setphone" value="" />
+                                <div class="error_box old_phone_error_box">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>密码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ipts" style="margin-bottom: 7px;">
+                                <span>手机验证码：</span><input type="text" autocomplete="off" placeholder="请输入手机验证码"
+                                    style="width: 180px;" id="qq_code3" />
+                                <button type="button" class="setnsms" id="getCode3">点击发送验证码</button>
+                                <p class="get_code_en none" style="margin-top: 2px;"></p>
+                                <div class="error_box old_phone_code_error_box" style="left: 418px;">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>验证码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="sendShowbox none"
+                                style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                                验证码已发送到手机<span style="color: #FF6666;" class="dx_phone3">*********</span>短信
+                                ，请查看短信完成验证操作。</div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close_phone_sub button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="set_phone_sub_one" class="bind_user_go">确 认</button>
+                </div>
+            </div>
+            <div class="setphonego_two modal-content none" style="position: absolute;left: 100%;width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">修改手机-第二步</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts" style="margin-bottom: 7px;">
+                                <span style="width: 72px;">新手机号：</span>
+                                <input type="text" autocomplete="off" maxlength="11" placeholder="新手机长度范围:11位"
+                                    id="setphone" name="setphone" value="" />
+                                <div class="error_box phone_error_box">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>密码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ipts" style="margin-bottom: 7px;">
+                                <span>手机验证码：</span><input type="text" autocomplete="off" placeholder="请输入手机验证码"
+                                    style="width: 180px;" id="qq_code4" />
+                                <button type="button" class="setnsms" id="getCode4">点击发送验证码</button>
+                                <p class="get_code_en none" style="margin-top: 2px;"></p>
+                                <div class="error_box phone_code_error_box" style="left: 418px;">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>验证码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="sendShowbox none"
+                                style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                                验证码已发送到手机<span style="color: #FF6666;" class="dx_phone4">*********</span>短信
+                                ，请查看短信完成验证操作。</div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close_phone_sub button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="set_phone_sub_two" class="bind_user_go">确 认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 修改手机 end -->
+
+    <!-- 弹窗 重装系统 start -->
+    <div class="modal fade" id="switchery_set" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">关闭重启验证</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts" style="margin-bottom: 7px;">
+                                <span>手机验证码：</span>
+                                <input type="text" autocomplete="off" placeholder="请输入手机验证码" style="width: 180px;"
+                                    id="switchery_code" />
+                                <button type="button" class="setnsms" id="getCode5">点击发送验证码</button>
+                                <p class="get_code_switchery none" style="margin-top: 2px;"></p>
+                                <div class="error_box switchery_code_error_box" style="left: 418px;">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>验证码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sendShowbox none"
+                        style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                        验证码已发送到手机<span style="color: #FF6666;" class="dx_phone5">*********</span>短信 ，请查看短信完成验证操作。</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="switchery_set_sub" class="bind_user_go">确 认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 重装系统 end -->
+
+
+
+    <!-- 弹窗 绑定支付宝 start-->
+    <div class="modal  fade" id="Alipay" aria-hidden="true" aria-labelledby="restartModel" role="dialog" tabindex="-1"
+        style="z-index: 2000;">
+        <div class="modal-dialog modal-center" style="width:680px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">绑定支付宝账户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-2 text_label">真实姓名 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入真实姓名">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">支付宝账户 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入支付宝账户">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">确认支付宝账户 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入支付宝账户 ">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">短信验证码 :</div>
+                        <div class="col-xs-8">
+                            <div class="inputbox">
+                                <div class="input-group">
+                                    <input style="width: 70%;" type="text" class="form-control" placeholder="输入收到的短信验证码"
+                                        aria-describedby="basic-addon2">
+                                    <button class="input-group-addon codeBtn" id="basic-addon2">发送短信验证码</button>
+                                </div>
+                                <p>
+                                    <span>密保手机: </span>
+                                    <span>158 **** 1234</span>
+                                    <span>发送验证码，请注意查收</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取消</button>
+                    <button type="button" id="confirm_Alipay" data-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 绑定支付宝 end -->
+
+    <!-- 弹窗 绑定储蓄卡 start-->
+    <div class="modal  fade" id="bank_card" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1" style="z-index: 2000;">
+        <div class="modal-dialog modal-center" style="width:680px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">绑定储蓄卡</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-2 text_label">真实姓名 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入真实姓名">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">选择开户行 :</div>
+                        <div class="col-xs-8">
+                            <select class="selectpicker">
+                                <option value="">中国银行</option>
+                                <option value="">招商银行</option>
+                                <option value="">中国建设银行</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">储蓄卡卡号 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入储蓄卡卡号">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">确认储蓄卡卡号 :</div>
+                        <div class="col-xs-8">
+                            <input type="text" placeholder="请输入储蓄卡卡号 ">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text_label">短信验证码 :</div>
+                        <div class="col-xs-8">
+                            <div class="inputbox">
+                                <div class="input-group">
+                                    <input style="width: 70%;" type="text" class="form-control" placeholder="输入收到的短信验证码"
+                                        aria-describedby="basic-addon2">
+                                    <button class="input-group-addon codeBtn" id="basic-addon2">发送短信验证码</button>
+                                </div>
+                                <p>
+                                    <span>密保手机: </span>
+                                    <span>158 **** 1234</span>
+                                    <span>发送验证码，请注意查收</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取消</button>
+                    <button type="button" id="confirm_bank_card" data-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 绑定储蓄卡 end -->
+
+
+
+
+
+
+    <script type="text/javascript">
+        var edit_url_phone = '/index.php/vhost/userinfo/editphone.html';
+        var red_url = '';
+        var email_update_url = '/index.php/vhost/userinfo/edit.html';
+        var qq_update_url = '/index.php/vhost/userinfo/edit.html';
+        var qq_bind_okgo_url = '/index.php/vhost/userinfo/qq_bind_okgo.html';
+
+
+        $(function () {
+            // $('#switchery_set').modal();
+        })
+    </script><!-- End Page -->
+
+    <!-- 弹窗 公共修改密码 start -->
+    <script>
+        var phone = '18370862119';
+        var edit_url = '/index.php/vhost/userinfo/editpwd.html';
+
+        function hideShowPsw() {
+            if ($('#setpwd').attr('type') == "password") {
+                $('#setpwd').attr('type', 'text');
+                $('#showimg').attr('src', '/static/img/invisible.png');
+            } else {
+                $('#setpwd').attr('type', 'password');
+                $('#showimg').attr('src', '/static/img/visible.png');
+            }
+        }
+    </script>
+    <div class="modal fade" id="reset_connnn_pwd" aria-hidden="true" aria-labelledby="restartModel" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">修改密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="setting_box">
+                        <ul>
+                            <li class="ipts">
+                                <span style="width: 72px;">新密码：</span>
+                                <img id="showimg" onclick="hideShowPsw()" src="/static/img/visible.png"
+                                    style="width: 20px;height: 13px;position: absolute;right: 50px;margin: 12px;">
+                                <input type="password" autocomplete="new-password" maxlength="20"
+                                    placeholder="新密码长度范围:6-20位" id="setpwd" name="setpwd" value="" />
+                                <div class="error_box pwd_error_box">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>密码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ipts">
+                                <span>手机验证码：</span><input type="text" autocomplete="off" placeholder="请输入手机验证码"
+                                    style="width: 180px;" id="qq_code2" />
+                                <button type="button" class="setnsms" id="getCode2"
+                                    style="height: 36px;margin-left: 10px;color: #FF6666;border: 1px solid #FF6666;background-color: #fff;">点击发送验证码</button>
+                                <p class="get_code_en none" style="margin-top: 2px;"></p>
+                                <div class="error_box pwd_code_error_box" style="left: 417px;">
+                                    <div class="error_content">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-jinggao-qipaotishi-grey"></use>
+                                        </svg>
+                                        <span>验证码错误</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="sendShowbox none"
+                                style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                                验证码已发送到手机<span style="color: #FF6666;" class="dx_phone2">*********</span>短信
+                                ，请查看短信完成验证操作。</div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" id="set_pwd_sub" class="bind_user_go">确 认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/js/vhost/userinfo_index.js?v=20200619.1"></script>
+
+    <!-- 弹窗 评价客服 start -->
+    <div class="modal fade" id="estimate" aria-hidden="true" aria-labelledby="estimate" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:288px">
+            <div class="modal-content">
+                <div class="modal-body" style="padding:0px;">
+                    <div class="estimate_service">
+                        <div class="title">评价您的专属客服</div>
+                        <div class="star clearfix">
+                            <label for="level_1" class="selected"><input type="radio" name="grade" id="level_1"></label>
+                            <label for="level_2" class="selected"><input type="radio" name="grade" id="level_2"></label>
+                            <label for="level_3" class="selected"><input type="radio" name="grade" id="level_3"
+                                    checked></label>
+                            <label for="level_4"><input type="radio" name="grade" id="level_4"></label>
+                            <label for="level_5"><input type="radio" name="grade" id="level_5"></label>
+                            <div class="star_text">一般</div>
+                        </div>
+                        <textarea placeholder="请填写评价理由"></textarea>
+                        <div class="verify">
+                            <input type="text" autocomplete="off" placeholder="输入手机验证码" maxlength="11">
+                            <!-- 加sent类名为重新获取验证码倒计时样式 -->
+                            <a href="javascript:;" class="sendBtn_fast">获取验证码</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">取 消</button>
+                    <button type="button">提 交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 评价客服 end -->
+
+    <!-- 弹窗 更换客服 start -->
+    <div class="modal fade" id="change-service" aria-hidden="true" aria-labelledby="change-service" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:620px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bottom_tips pt_none">
+                        <div style="padding:8px 16px 8px 36px;">
+                            <i class="">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-tishi2"></use>
+                                </svg>
+                            </i>
+                            <p>如果您对当前的客服服务态度不满意，请提交相关的真实聊天记录，我们将视情况为您更换客服。</p>
+                        </div>
+                    </div>
+                    <div class="add_box">
+                        <div class="add_list">
+                            <ul>
+                                <li>
+                                    <span>更换客服原因:</span><textarea id="change_service_reason"
+                                        placeholder="请在此处输入您的问题描述"></textarea>
+                                </li>
+                                <li>
+                                    <span>是否指定客服::</span>
+                                    <div class="sourcenet">
+                                        <input type="radio" name="service" value="1" id="appoint-service" checked><label
+                                            for="appoint-service" class="select_radio">指定客服</label>
+                                        <input type="radio" name="service" value="2" id="random-service"><label
+                                            for="random-service" class="select_radio">随机匹配</label>
+                                    </div>
+                                    <div class="appoint-service-msg">
+                                        <select class="selectpicker" id="change_service_info" style="margin-top: 10px;">
+                                            <option value="CC1848625">小易</option>
+                                            <option value="QY-10988">小赖</option>
+                                            <option value="919086@YS">小来</option>
+                                            <option value="QY-10981">小李</option>
+                                            <option value="CC1848603">小罗</option>
+                                            <option value="CC21669717">小阮</option>
+                                            <option value="QY-10132">小邓</option>
+                                            <option value="QY-10985">小褚</option>
+                                            <option value="QY-10984">小杨</option>
+                                            <option value="QY-10989">小黄</option>
+                                            <option value="CC2651324">小虞</option>
+                                            <option value="CC2208069">小谢</option>
+                                            <option value="211567@YS">小张</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>上传相关聊天记录:</span>
+                                    <div class="upbox clearfix">
+                                        <div class="upbox_left">
+
+                                            <div class="upbox_item add_upload">
+                                                <!-- has_error 错误样式-->
+                                                <a href="javascript:;">
+                                                    <input id="chat_record" type="file" multiple="multiple">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use xlink:href="#icon-shangchuan-zhaopian"></use>
+                                                    </svg>
+                                                    <p>上传文件</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>短信验证码:</span>
+                                    <div class="common-verify-box"><input id="change_service_code" type="text"
+                                            placeholder="请输入验证码"><a id="getChangeServiceCode"
+                                            href="javascript:;">获取验证码</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sendShowbox none"
+                        style="line-height: 32px;font-size: 12px;color: #5E6D81;background-color: #F0F2F5;padding: 0px 24px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;margin-bottom: 20px;">
+                        <span class="dx_phone_bb none">验证码已发送到手机<span style="color: #FF6666;"
+                                class="dx_phone">*********</span>短信 ，请查看短信完成验证操作。</span>
+                        <br />
+                        <span class="dx_phone_email_bb none">验证邮件已发送到邮箱<span
+                                class="dx-phone-email3">******@qq.com</span> ，请<a href="javascript:;" target="_blank"
+                                id="logemail2" style="color:#5E6D81;">登录邮箱</a>完成验证操作。</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button_cancle cancel" data-dismiss="modal">关 闭</button>
+                    <button type="button" class="change-service-submit">提 交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服 end -->
+
+    <!-- 弹窗 更换客服审核进度 start -->
+    <div class="modal fade" id="change-service-audit" aria-hidden="true" aria-labelledby="open_server" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:604px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服进度查询</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="apply-audit-tip">您已经提交更换客服申请，请耐心等待系统审核</div>
+                    <div class="add_box">
+                        <div class="add_list">
+                            <ul>
+                                <li>
+                                    <span>提交申请时间:</span>
+                                    <div class="change-apply-date">1970-01-01 08:00:00</div>
+                                    <p class="withdraw-apply">30分钟内您可以 <a href="javascript:;"
+                                            onclick="revokeChangeService();">撤销更换客服操作</a></p>
+                                </li>
+                                <li>
+                                    <span>更换客服原因:</span>
+                                    <div class="change-service-reson"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">确 定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服审核进度 end -->
+
+    <!-- 弹窗 更换客服成功 start -->
+    <div class="modal fade" id="change-service-success" aria-hidden="true" aria-labelledby="open_server" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-center" style="width:604px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">更换客服</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="surebox">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-chenggong-danchuang"></use>
+                        </svg>
+                        <div>提交成功</div>
+                        <p>您已经成功提交售前客服更换申请，我们将在2个工作日内完成更换客服的审核，如有问题请联系我们的售后人员。</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">确 定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 更换客服成功 end -->
+
+
+    <!-- 自定义菜单栏 2020-02-18 start -->
+    <div class="navdiy-main">
+        <div class="navdiy-main-box">
+            <div class="navdiy-main-nav">
+                <div class="main-nav-item-box" id="sortmenu">
+                    <div class="main-nav-item" data-value="cloud">
+                        <a class="handle" href="javascript:;">云服务器</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ddosnew">
+                        <a class="handle" href="javascript:;">安全防护</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ddoscdn">
+                        <a class="handle" href="javascript:;">高防CDN</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="physicsserver">
+                        <a class="handle" href="javascript:;">裸金属服务器</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="ssl">
+                        <a class="handle" href="javascript:;">SSL证书</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="dns">
+                        <a class="handle" href="javascript:;">DNS解析</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="rds">
+                        <a class="handle" href="javascript:;">云数据库</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="cdn">
+                        <a class="handle" href="javascript:;">CDN加速</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="dcdn">
+                        <a class="handle" href="javascript:;">全站加速</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="slb">
+                        <a class="handle" href="javascript:;">负载均衡</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="sms">
+                        <a class="handle" href="javascript:;">短信服务</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                    <div class="main-nav-item" data-value="iotcard">
+                        <a class="handle" href="javascript:;">物联卡</a>
+                        <span class="remove-menu-con" title="移出菜单栏"><i class="iconfont">&#xe61f;</i></span>
+                        <span class="move-menu-pos handle" title="拖动以调整顺序"><i class="iconfont">&#xe6c0;</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="navdiy-main-menu">
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c2;</i><span>云计算</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="cloud" id="cloud" checked><label id="cloud_label" for="cloud"
+                                class="select_checkbox">云服务器</label>
+                            <input type="checkbox" value="physicsserver" id="physicsserver" checked><label
+                                id="physicsserver_label" for="physicsserver" class="select_checkbox">裸金属服务器</label>
+                            <input type="checkbox" value="slb" id="slb" checked><label id="slb_label" for="slb"
+                                class="select_checkbox">负载均衡</label>
+                        </div>
+                    </div>
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c4;</i><span>通信</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="sms" id="sms" checked><label id="sms_label" for="sms"
+                                class="select_checkbox">短信服务</label>
+                            <input type="checkbox" value="iotcard" id="iotcard" checked><label id="iotcard_label"
+                                for="iotcard" class="select_checkbox">物联卡</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c5;</i><span>数据库与CDN加速</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="cdn" id="cdn" checked><label id="cdn_label" for="cdn"
+                                class="select_checkbox">CDN加速</label>
+                            <input type="checkbox" value="dcdn" id="dcdn" checked><label id="dcdn_label" for="dcdn"
+                                class="select_checkbox">全站加速</label>
+                            <input type="checkbox" value="rds" id="rds" checked><label id="rds_label" for="rds"
+                                class="select_checkbox">云数据库</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navdiy-menu-item-column">
+                    <div class="navdiy-menu-item">
+                        <div class="navdiy-menu-item-title"><i class="iconfont">&#xe6c3;</i><span>云安全</span></div>
+                        <div class="navdiy-menu-item-list">
+                            <input type="checkbox" value="dns" id="dns" checked><label id="dns_label" for="dns"
+                                class="select_checkbox">DNS解析</label>
+                            <input type="checkbox" value="ssl" id="ssl" checked><label id="ssl_label" for="ssl"
+                                class="select_checkbox">SSL证书</label>
+                            <input type="checkbox" value="ddos" id="ddos"><label id="ddos_label" for="ddos"
+                                class="select_checkbox">高防IP</label>
+                            <input type="checkbox" value="ddosnew" id="ddosnew" checked><label id="ddosnew_label"
+                                for="ddosnew" class="select_checkbox">安全防护</label>
+                            <input type="checkbox" value="ddoscdn" id="ddoscdn" checked><label id="ddoscdn_label"
+                                for="ddoscdn" class="select_checkbox">高防CDN</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navdiy-footer">
+                <div class="navdiy-footer-text">自定义产品到侧导航栏，拖动色块可调整顺序</div>
+                <div class="navdiy-footer-button"><button type="button" class="cancel close-navdiy-main">取
+                        消</button><button id="navdiy_submit" type="button">保存编辑</button></div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义菜单栏 2020-02-18 end -->
+
+    <script src="https://cache.yisu.com/user/uiqy/newJs/bootstrap.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/jquery.asScrollable.all.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/core.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/site.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/menu.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/menubar.min.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/common.js?v=20200616.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/backstage.js?v=20200831.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/navdiy.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/sortable.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/bootstrap-select.js"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/change-service.js"></script>
+
+    <script src="https://cache.yisu.com/user/uiqy/vendor/switchery/switchery.min.js?v=20210330.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/js/core.js?v=20210330.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/assets/js/site.js?v=20210330.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/newJs/switchery.js?v=20190216?v=20210330.1"></script>
+    <script src="https://cache.yisu.com/user/uiqy/js/qy/list.js?v=20210330.1"></script>
+    <script type="text/javascript">
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0910b1e24e81c0e61462b7a766830fec";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        try {
+            $(function ($) {
+                $.getJSON('https://yisuapi.yisu.com/index.php/Speed/Uc/checkLogin/?callback=?', function (
+                    res) {});
+                $('.side-' + ysconst.module + '-' + ysconst.controller).addClass('active');
+
+                $('.bind_status .item').hover(function () {
+                    $(this).children('.bubble').show().parent().siblings().children('.bubble').hide();
+                }, function () {
+                    $(this).children('.bubble').hide()
+                })
+
+                $('.cancel').click(function () {
+                    $('#eamil_bind').hide();
+                });
+
+                var sortmenu = document.getElementById('sortmenu');
+                new Sortable(sortmenu, {
+                    handle: '.handle',
+                    animation: 300
+                });
+            });
+            //导航切换锁定
+            $('#ysList').addClass('active');
+            $('.ysList li').eq(0).children('a').addClass('active');
+            $('.ysList').show();
+
+            function consultation(qq) {
+                window.open('https://wpa.qq.com/msgrd?v=3&uin=' + qq + '&site=qq&menu=yes');
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+        var mainUrls = {
+            getUserGroup: '/index.php/vhost/usergroup/getgroupbyproductidandtype.html',
+            setUserGroup: '/index.php/vhost/usergroup/editgroupbyproductidandtype.html',
+        };
+
+        $('#logout').click(function (e) {
+            e.preventDefault();
+            var url = 'https://yisuapi.yisu.com/index.php/Speed/Uc/logout/?callback=?';
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "jsonp",
+                success: function (res) {
+                    if (res == 1) {
+                        // alert( "退出登录成功！" );
+                        // window.location.reload();
+                        $.yisu_alert_success({
+                            "cont": "退出登录成功！"
+                        });
+                        window.setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        alert(ERROR_LOGOUT);
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        //登录时异步请求一个关注公众号二维码
+        function getQRcode() {
+            var url = "https://weixin.yisu.com/index.php/Speed/Uc/getAuditQrImg";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    1: 1
+                },
+                dataType: "json",
+                timeout: 30000,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    if (1 == data.status) {
+                        $('#wechat_loading').hide();
+                        $('#wechat_qrcode').attr('src', data.data.img).show();
+                    } else {
+                        $('#wechat_qrcode').hide();
+                        $('#wechat_loading').show();
+                        $('.erweima_error').show();
+                    }
+                    //每十分钟自动刷新一次
+                    setTimeout(getQRcode, 600000);
+                },
+                error: function (err) {
+                    $('#wechat_qrcode').hide();
+                    $('#wechat_loading').show();
+                    $('.erweima_error').show();
+                }
+            });
+        };
+        getQRcode();
+
+        $(function () {
+            $('.erweima_error').off('click');
+            $('.erweima_error').on('click', function () {
+                getQRcode();
+            });
+
+            var t1, urls_status = '/vhost/index/get_status_wechat',
+                timeStart = 1,
+                tiemEnd = 40;
+
+            function getStatus() {
+                if (timeStart >= tiemEnd) window.clearInterval(t1);
+                $.getJSON(urls_status, {}, function (dt) {
+                    timeStart++;
+                    if (dt.error * 1 == 2) {
+                        $.yisu_alert_success({
+                            "cont": "关注公众号成功！"
+                        });
+                        window.clearInterval(t1);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                });
+            }
+            //移入时开启定时，移出时关闭
+            $('#wechat_item').hover(function () {
+                t1 = window.setInterval(getStatus, 3000);
+            }, function () {
+                window.clearInterval(t1);
+                timeStart = 1;
+            })
+        });
+    </script>
+</body>
+
+</html>
